@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Online Notepad</title>
+  <meta name="description" content="A free, simple and minimal online notepad. Your notes are automatically saved in your browser. No login required." />
+  <meta name="keywords" content="online notepad, text editor, simple notes, write online, autosave notes" />
+  <meta name="author" content="SimpleTools" />
+  <meta name="robots" content="index, follow" />
+  <meta name="google-adsense-account" content="ca-pub-7515058459267335" />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      padding: 15px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      background: #fff;
+    }
+
+    .info {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>Online Notepad</h1>
+  <textarea id="notepad" placeholder="Start typing your notes here..."></textarea>
+  <div class="info">Your notes are automatically saved in your browser (localStorage).</div>
+
+  <script>
+    const notepad = document.getElementById('notepad');
+    notepad.value = localStorage.getItem('simple-notepad') || '';
+    notepad.addEventListener('input', () => {
+      localStorage.setItem('simple-notepad', notepad.value);
+    });
+  </script>
+</body>
+</html>
